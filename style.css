@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  color: #e0f7ff;
+  background: radial-gradient(circle at 20% 20%, #00111a, #000000 80%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* เอฟเฟกต์แสงเรืองเคลื่อนไหวด้านหลัง */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(0,255,255,0.1) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(0,255,255,0.1) 0%, transparent 40%);
+  animation: glowMove 20s infinite linear;
+  z-index: -1;
+}
+
+@keyframes glowMove {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+header h1 {
+  font-size: 2.7rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #00e5ff, 0 0 25px #00b8d4;
+  color: #00e5ff;
+  animation: fadeInDown 1.5s ease-out;
+}
+
+header p {
+  color: #80deea;
+  font-size: 1.1rem;
+  margin-top: 8px;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* กล่องค้นหา */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.search-section input {
+  width: 85%;
+  max-width: 420px;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-size: 1rem;
+  border: 2px solid rgba(0,255,255,0.4);
+  background: rgba(255,255,255,0.08);
+  color: #e0f7ff;
+  backdrop-filter: blur(10px);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  transition: 0.3s;
+}
+
+.search-section input:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 15px #00e5ff;
+  transform: scale(1.03);
+}
+
+/* โซนการ์ดข้อมูล */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  padding: 20px 30px 60px;
+}
+
+.place-card {
+  background: rgba(0, 30, 40, 0.8);
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  transition: 0.4s;
+  box-shadow: 0 0 10px rgba(0,255,255,0.1);
+  position: relative;
+}
+
+.place-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  border: 1px solid rgba(0,255,255,0.1);
+  box-shadow: 0 0 30px rgba(0,255,255,0.1);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.place-card:hover::before {
+  opacity: 1;
+}
+
+.place-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+.place-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(0,255,255,0.3);
+}
+
+.place-card h3 {
+  color: #00e5ff;
+  margin: 12px 15px 8px;
+  font-size: 1.3rem;
+  text-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+.place-card p {
+  color: #b2ebf2;
+  margin: 0 15px 10px;
+  font-size: 0.95rem;
+}
+
+/* ฟุตเตอร์เท่ๆ */
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  background: rgba(0, 30, 40, 0.9);
+  border-top: 1px solid rgba(0,255,255,0.2);
+  box-shadow: 0 -2px 10px rgba(0,255,255,0.1);
+}
+
+footer p {
+  color: #80deea;
+}

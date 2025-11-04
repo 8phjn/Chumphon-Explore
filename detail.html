@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายละเอียดสถานที่</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="detail-container">
+    <button onclick="history.back()" class="back-btn">⬅ กลับ</button>
+    <div id="detail"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const data = JSON.parse(localStorage.getItem("places"));
+    const place = data.find(p => p.name === name);
+
+    if (place) {
+      document.getElementById("detail").innerHTML = `
+        <h2>${place.name}</h2>
+        <p><b>ประเภท:</b> ${place.type}</p>
+        <p>${place.desc}</p>
+      `;
+    } else {
+      document.getElementById("detail").innerHTML = `<p>ไม่พบข้อมูล</p>`;
+    }
+  </script>
+</body>
+</html>
